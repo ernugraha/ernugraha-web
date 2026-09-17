@@ -25,7 +25,7 @@ search_exclude: true
 Still not much? Contact me so i will make posts matching for you!
 
 ### Contact:
-Email: [ernugraha@ernugraha.com](mailto:ernugraha@ernugraha.com)
+Email: [ernugraha@ernugraha.com](mailto:ernugraha@ernugraha.com) or [ernugraha.web@gmail.com](mailto:ernugraha.web@gmail.com)
 
 Phone: *(Currently not available)*
 
