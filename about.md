@@ -8,7 +8,9 @@ search_exclude: true
 
 # Who i am
 
-<img src="/assets/img/avaicon.png" alt="ava" width="100"/> Yo wassup internet, my name (not real name) is ernugraha. I like to doing wierd linux stuff, and i like do gaming.
+<img src="/assets/img/avaicon.png" alt="ava" width="100"/>
+
+ Yo wassup internet, my name (not real name) is ernugraha. I like to doing wierd linux stuff, and i like do gaming.
 
 ### And this thing that i can do/help:
 - Raspberry Pi Stuff
