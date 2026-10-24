@@ -266,7 +266,7 @@
   border: 1px solid #303d4c !important;
   border-radius: 7px !important;
 
-  background: #090e14 !important;
+  background: #14161c !important;
   color: #d9e0e8 !important;
 
   font-size: 0.88rem;
@@ -289,38 +289,48 @@
 .home-divider {
   margin: 55px auto 45px;
   border: 0;
-  border-top: 1px solid #263442;
+  border-top: 1px solid #111318;
   max-width: 90%;
 }
 
 /* Home headings */
 
+.home-section-title,
+.home-section-subtitle {
+  text-align: center;
+  width: 100%; /* Paksa h1 mengambil lebar penuh agar text-align bekerja */
+  display: block;
+}
+
+/* 2. ANIMASI DENGAN DURASI 1.9 DETIK */
 .home-section-title {
+  /* State Awal (Tersembunyi) */
+  clip-path: inset(0 100% 0 0);
+  transform: translateY(20px); /* Pakai Y (naik dari bawah) biar lebih natural buat text yang di-center */
   opacity: 0;
+  
+  /* Durasi kita ubah jadi 1.9s biar puas dan jelas terlihat */
+  transition:
+    clip-path 1.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.9s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity   1.5s ease;
 }
 
+/* State Akhir (Muncul) */
 .home-section-title.is-visible {
-  animation: slide-reveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-@keyframes slide-reveal {
-  from {
-    clip-path: inset(0 100% 0 0);
-    transform: translateX(-16px);
-    opacity: 0;
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-    transform: translateX(0);
-    opacity: 1;
-  }
+  clip-path: inset(0 0 0 0);
+  transform: translateY(0);
+  opacity: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .home-section-title { opacity: 1; }
-  .home-section-title.is-visible { animation: none; }
+  .home-section-title {
+    clip-path: none;
+    transform: none;
+    opacity: 1;
+    transition: none;
+  }
 }
-
 /* Tablet */
 
 @media (max-width: 900px) {
