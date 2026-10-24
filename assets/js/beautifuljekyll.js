@@ -145,3 +145,13 @@ let BeautifulJekyllJS = {
 // 2fc73a3a967e97599c9763d05e564189
 
 document.addEventListener('DOMContentLoaded', BeautifulJekyllJS.init);
+
+document.querySelectorAll('.home-section-title').forEach((el) => {
+  const io = new IntersectionObserver(([entry], obs) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      obs.disconnect();
+    }
+  }, { threshold: 0.4 });
+  io.observe(el);
+});
