@@ -144,14 +144,30 @@ let BeautifulJekyllJS = {
 
 // 2fc73a3a967e97599c9763d05e564189
 
-document.addEventListener('DOMContentLoaded', BeautifulJekyllJS.init);
+document.addEventListener("DOMContentLoaded", () => {
+  const titles = document.querySelectorAll('.home-section-title');
 
-document.querySelectorAll('.home-section-title').forEach((el) => {
-  const io = new IntersectionObserver(([entry], obs) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('is-visible');
-      obs.disconnect();
-    }
-  }, { threshold: 0.4 });
-  io.observe(el);
+  // threshold: 0.1 artinya animasi mulai jalan saat 10% elemen masuk ke layar
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        
+        // KUNCI RAHASIANYA DI SINI:
+        // Kita kasih jeda 150ms sebelum class 'is-visible' ditambahkan.
+        // Ini memaksa browser untuk "melihat" posisi awal (tersembunyi) 
+        // terlebih dahulu, sehingga transisi 1.9 detiknya dijamin jalan.
+        setTimeout(() => {
+          entry.target.classList.add('is-visible');
+        }, 150); 
+        
+        // Hentikan pemantauan untuk elemen ini karena animasinya cuma sekali
+        obs.unobserve(entry.target); 
+      }
+    });
+  }, { threshold: 0.1 });
+
+  // Terapkan observer ke semua judul
+  titles.forEach(title => {
+    observer.observe(title);
+  });
 });
