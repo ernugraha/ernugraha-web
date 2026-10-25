@@ -52,17 +52,14 @@
   text-decoration: none;
   color: #fff;
 }
-
-
 /* =========================================
- *   PROJECTS SECTION - FINAL
- *   Beautiful Jekyll
+ *   PROJECTS SECTION
  *   ========================================= */
 
 .projects-section {
   display: block !important;
   width: 100%;
-  margin: 30px auto 70px;
+  margin: 60px auto 70px;
   text-align: left !important;
   box-sizing: border-box;
 }
