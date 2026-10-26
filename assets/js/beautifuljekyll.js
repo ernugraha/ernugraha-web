@@ -146,8 +146,7 @@ let BeautifulJekyllJS = {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  const titles = document.querySelectorAll('.home-section-title');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const titles = document.querySelectorAll('.home-section-title:not(.hero-wrapper .home-section-title)');  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const reveal = (el) => {
     if (!el || el.classList.contains('is-visible')) return;
