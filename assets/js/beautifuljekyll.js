@@ -147,27 +147,45 @@ let BeautifulJekyllJS = {
 document.addEventListener("DOMContentLoaded", () => {
   const titles = document.querySelectorAll('.home-section-title');
 
-  // threshold: 0.1 artinya animasi mulai jalan saat 10% elemen masuk ke layar
+  // Fallback kalau user minta reduced motion
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const reveal = (el) => {
+    if (!el || el.classList.contains('is-visible')) return;
+
+    if (reduceMotion) {
+      el.classList.add('is-visible');
+      return;
+    }
+
+    // Double rAF: paksa browser paint state awal (hidden) dulu,
+    // baru tambahkan class. Ini yang bikin transisi dijamin jalan di Chromium.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        el.classList.add('is-visible');
+      });
+    });
+  };
+
+  // Kalau IntersectionObserver tidak tersedia, langsung tampilkan semua
+  if (!('IntersectionObserver' in window)) {
+    titles.forEach(reveal);
+    return;
+  }
+
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        
-        // KUNCI RAHASIANYA DI SINI:
-        // Kita kasih jeda 150ms sebelum class 'is-visible' ditambahkan.
-        // Ini memaksa browser untuk "melihat" posisi awal (tersembunyi) 
-        // terlebih dahulu, sehingga transisi 1.9 detiknya dijamin jalan.
-        setTimeout(() => {
-          entry.target.classList.add('is-visible');
-        }, 150); 
-        
-        // Hentikan pemantauan untuk elemen ini karena animasinya cuma sekali
-        obs.unobserve(entry.target); 
+        reveal(entry.target);
+        obs.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1 });
 
-  // Terapkan observer ke semua judul
   titles.forEach(title => {
     observer.observe(title);
+    // Safety net: kalau dalam 2.5s belum ke-reveal, paksa tampil
+    // (jaga-jaga observer tidak fire karena alasan apa pun)
+    setTimeout(() => reveal(title), 2500);
   });
 });
