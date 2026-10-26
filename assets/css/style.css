@@ -52,10 +52,10 @@
   text-decoration: none;
   color: #fff;
 }
+
 /* =========================================
  *   PROJECTS SECTION
  *   ========================================= */
-
 .projects-section {
   display: block !important;
   width: 100%;
@@ -73,7 +73,6 @@
 }
 
 /* Grid layout */
-
 .projects-section .projects-grid {
   display: grid !important;
   grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
@@ -81,45 +80,41 @@
   align-items: stretch;
   width: 100%;
   box-sizing: border-box;
+
+  /* Center two project cards and make them wider */
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  max-width: 1000px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  gap: 30px !important;
 }
 
 /* Card */
-
 .projects-section .project-card {
   display: flex !important;
   flex-direction: column !important;
   align-items: stretch !important;
-
   min-width: 0;
   margin: 0 !important;
   padding: 0 !important;
   overflow: hidden;
   box-sizing: border-box;
-
   background: #14161c !important;
   color: #d9e0e8 !important;
   border: 1px solid #263442 !important;
   border-radius: 14px !important;
   text-align: left !important;
-
   box-shadow: 0 0 0 transparent;
-
-  transition:
-  transform 0.25s ease,
-  border-color 0.25s ease,
-  box-shadow 0.25s ease;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .projects-section .project-card:hover {
   transform: translateY(-6px);
   border-color: #1687ff !important;
-  box-shadow:
-  0 0 0 1px rgba(22, 135, 255, 0.2),
-  0 10px 28px rgba(0, 100, 255, 0.12);
+  box-shadow: 0 0 0 1px rgba(22, 135, 255, 0.2), 0 10px 28px rgba(0, 100, 255, 0.12);
 }
 
 /* Image */
-
 .projects-section .project-image {
   position: relative !important;
   display: block !important;
@@ -138,11 +133,9 @@
   width: 100% !important;
   max-width: none !important;
   height: 100% !important;
-
   margin: 0 !important;
   padding: 0 !important;
   object-fit: cover;
-
   transition: transform 0.35s ease;
 }
 
@@ -151,32 +144,22 @@
 }
 
 /* Image overlay */
-
 .projects-section .project-overlay {
   position: absolute !important;
   inset: 0;
-
   display: flex !important;
   flex-direction: column !important;
   align-items: flex-start !important;
   justify-content: flex-start !important;
   gap: 8px;
-
   margin: 0 !important;
   padding: 16px !important;
-
-  background: linear-gradient(
-    90deg,
-    rgba(5, 10, 16, 0.82) 0%,
-                              rgba(5, 10, 16, 0.35) 65%,
-                              rgba(5, 10, 16, 0.08) 100%
-  );
+  background: linear-gradient(90deg, rgba(5, 10, 16, 0.82) 0%, rgba(5, 10, 16, 0.35) 65%, rgba(5, 10, 16, 0.08) 100%);
 }
 
 .projects-section .project-overlay h3 {
   margin: 0 !important;
   padding: 0 !important;
-
   color: #ffffff !important;
   font-size: 1.2rem;
   font-weight: 750;
@@ -184,17 +167,13 @@
 }
 
 /* Status badges */
-
 .projects-section .project-status {
   display: inline-block !important;
   width: fit-content;
-
   margin: 0 !important;
   padding: 4px 10px !important;
-
   border: 0 !important;
   border-radius: 6px !important;
-
   font-size: 0.78rem;
   font-weight: 600;
   line-height: 1.4;
@@ -216,11 +195,9 @@
 }
 
 /* Description */
-
 .projects-section .project-content {
   display: block !important;
   flex: 1 0 auto;
-
   margin: 0 !important;
   padding: 18px !important;
   box-sizing: border-box;
@@ -229,7 +206,6 @@
 .projects-section .project-content p {
   margin: 0 !important;
   padding: 0 !important;
-
   color: #a0acba !important;
   font-size: 0.94rem;
   line-height: 1.7;
@@ -237,7 +213,6 @@
 }
 
 /* Footer */
-
 .projects-section .project-footer {
   display: flex !important;
   flex-direction: row !important;
@@ -245,10 +220,8 @@
   justify-content: flex-end !important;
   flex-wrap: wrap;
   gap: 8px;
-
   margin: 0 !important;
   padding: 12px 16px !important;
-
   border-top: 1px solid #263442;
   box-sizing: border-box;
 }
@@ -256,23 +229,16 @@
 .projects-section .project-button {
   display: inline-block !important;
   width: auto !important;
-
   margin: 0 !important;
   padding: 7px 13px !important;
-
   border: 1px solid #303d4c !important;
   border-radius: 7px !important;
-
   background: #14161c !important;
   color: #d9e0e8 !important;
-
   font-size: 0.88rem;
   text-decoration: none !important;
   text-align: center !important;
-
-  transition:
-  background 0.2s ease,
-  border-color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .projects-section .project-button:hover {
@@ -282,7 +248,6 @@
 }
 
 /* Divider */
-
 .home-divider {
   margin: 55px auto 45px;
   border: 0;
@@ -290,7 +255,42 @@
   max-width: 90%;
 }
 
-/* 1. Layout Dasar (Bebas mau pakai ini atau punyamu) */
+/* =========================================
+ *   HERO CANVAS SECTION (NguliQ Effect)
+ *   ========================================= */
+.features.hero-wrapper {
+  position: relative;
+  display: flex !important; /* Memaksa flexbox agar teks di tengah */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 55vh; /* Tinggi area gelombang */
+  overflow: hidden;
+  background: #0f1115;
+  padding: 60px 20px;
+  box-sizing: border-box;
+}
+
+#hero-field {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: 1;
+pointer-events: none; /* Biar interaksi mouse tembus ke parent */
+}
+
+.hero-wrapper .home-section-title {
+  position: relative;
+  z-index: 2; /* Judul di atas canvas */
+  margin: 0;
+}
+
+/* =========================================
+ *   TEXT ANIMATION (Wipe Up Fade)
+ *   ========================================= */
 .home-section-title,
 .home-section-subtitle {
   text-align: center;
@@ -298,19 +298,17 @@
   display: block;
 }
 
-/* 2. STATE AWAL (Teks disembunyikan) */
+/* STATE AWAL (Teks disembunyikan) */
 .home-section-title {
-  opacity: 0; /* Kunci utama: kita cuma set opacity 0 di awal */
-  /* JANGAN pakai transition di sini! */
+  opacity: 0;
 }
 
-/* 3. STATE AKHIR (Saat class is-visible ditambahkan JS) */
+/* STATE AKHIR (Muncul) */
 .home-section-title.is-visible {
-  /* Jalankan animasi, jangan pakai transisi */
   animation: wipeUpFade 1.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* 4. KEYFRAMES (Kunci rahasia anti-blank di Chromium) */
+/* KEYFRAMES */
 @keyframes wipeUpFade {
   0% {
     -webkit-clip-path: inset(0 100% 0 0);
@@ -326,17 +324,9 @@
   }
 }
 
-/* 5. Aksesibilitas */
-@media (prefers-reduced-motion: reduce) {
-  .home-section-title {
-    opacity: 1;
-  }
-  .home-section-title.is-visible {
-    animation: none;
-  }
-}
-/* Tablet */
-
+/* =========================================
+ *   RESPONSIVE & ACCESSIBILITY
+ *   ========================================= */
 @media (max-width: 900px) {
   .projects-section .projects-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
@@ -344,58 +334,43 @@
   }
 }
 
-/* Mobile */
-
 @media (max-width: 580px) {
   .projects-section {
     margin-top: 20px;
     margin-bottom: 45px;
   }
-
   .projects-section .projects-title {
     font-size: 2rem;
   }
-
   .projects-section .projects-grid {
     grid-template-columns: minmax(0, 1fr) !important;
+    max-width: 100%;
     gap: 20px !important;
   }
-
   .projects-section .project-image {
     height: 200px;
   }
+
+  .features.hero-wrapper {
+    min-height: 40vh; /* Kurangi tinggi di mobile */
+    padding: 40px 20px;
+  }
 }
 
-/* Accessibility */
-
 @media (prefers-reduced-motion: reduce) {
+  .home-section-title {
+    opacity: 1;
+  }
+  .home-section-title.is-visible {
+    animation: none;
+  }
   .projects-section .project-card,
   .projects-section .project-image img,
   .projects-section .project-button {
     transition: none !important;
   }
-
   .projects-section .project-card:hover,
   .projects-section .project-card:hover .project-image img {
     transform: none !important;
-  }
-}
-
-/* Center two project cards and make them wider */
-
-.projects-section .projects-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  max-width: 1000px;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  gap: 30px !important;
-}
-
-/* Keep responsive layout on mobile */
-@media (max-width: 580px) {
-  .projects-section .projects-grid {
-    grid-template-columns: minmax(0, 1fr) !important;
-    max-width: 100%;
-    gap: 20px !important;
   }
 }
