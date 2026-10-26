@@ -292,39 +292,47 @@
 
 /* Home headings */
 
+/* Layout dasar */
 .home-section-title,
 .home-section-subtitle {
   text-align: center;
-  width: 100%; /* Paksa h1 mengambil lebar penuh agar text-align bekerja */
+  width: 100%;
   display: block;
 }
 
-/* 2. ANIMASI DENGAN DURASI 1.9 DETIK */
+/* State awal (tersembunyi) */
 .home-section-title {
-  /* State Awal (Tersembunyi) */
-  clip-path: inset(0 100% 0 0);
-  transform: translateY(20px); /* Pakai Y (naik dari bawah) biar lebih natural buat text yang di-center */
+  -webkit-clip-path: inset(0 100% 0 0);
+          clip-path: inset(0 100% 0 0);
+  transform: translateY(20px);
   opacity: 0;
-  
-  /* Durasi kita ubah jadi 1.9s biar puas dan jelas terlihat */
+
+  /* Bantu Chromium composite dengan benar */
+  will-change: clip-path, transform, opacity;
+
   transition:
-    clip-path 1.9s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 1.9s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity   1.5s ease;
+    -webkit-clip-path 1.9s cubic-bezier(0.22, 1, 0.36, 1),
+            clip-path 1.9s cubic-bezier(0.22, 1, 0.36, 1),
+             transform 1.9s cubic-bezier(0.22, 1, 0.36, 1),
+               opacity 1.5s ease;
 }
 
-/* State Akhir (Muncul) */
+/* State akhir (muncul) */
 .home-section-title.is-visible {
-  clip-path: inset(0 0 0 0);
+  -webkit-clip-path: inset(0 0 0 0);
+          clip-path: inset(0 0 0 0);
   transform: translateY(0);
   opacity: 1;
 }
 
+/* Hormati preferensi reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   .home-section-title {
-    clip-path: none;
+    -webkit-clip-path: none;
+            clip-path: none;
     transform: none;
     opacity: 1;
+    will-change: auto;
     transition: none;
   }
 }
