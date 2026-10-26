@@ -298,46 +298,61 @@ height: 100%;
 z-index: 1;
 pointer-events: none;
 }
-
-.hero-wrapper .home-section-title {
-  position: relative;
-  z-index: 2; /* Judul di atas canvas */
-  margin: 0;
-}
-
 /* =========================================
- *   TEXT ANIMATION (Wipe Up Fade)
+ *   TEXT ANIMATION
  *   ========================================= */
 .home-section-title,
 .home-section-subtitle {
-  text-align: center;
+  text-align: left;
   width: 100%;
   display: block;
 }
 
-/* STATE AWAL (Teks disembunyikan) */
-.home-section-title {
-  opacity: 0;
+.hero-wrapper .home-section-title {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+
+  animation: continuousWipe 9.8s cubic-bezier(0.22, 1, 0.36, 1) infinite !important;
+
+  will-change: clip-path, transform, opacity;
 }
 
-/* STATE AKHIR (Muncul) */
-.home-section-title.is-visible {
-  animation: wipeUpFade 1.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-/* KEYFRAMES */
-@keyframes wipeUpFade {
+/* KEYFRAMES LOOPING */
+@keyframes continuousWipe {
   0% {
     -webkit-clip-path: inset(0 100% 0 0);
     clip-path: inset(0 100% 0 0);
-    transform: translateY(20px);
     opacity: 0;
+    transform: translateY(15px);
   }
-  100% {
+
+  19.39% {
     -webkit-clip-path: inset(0 0 0 0);
     clip-path: inset(0 0 0 0);
-    transform: translateY(0);
     opacity: 1;
+    transform: translateY(0);
+  }
+
+  70.41% {
+    -webkit-clip-path: inset(0 0 0 0);
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  89.8% {
+    -webkit-clip-path: inset(0 0 0 100%);
+    clip-path: inset(0 0 0 100%);
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    -webkit-clip-path: inset(0 0 0 100%);
+    clip-path: inset(0 0 0 100%);
+    opacity: 0;
+    transform: translateY(-15px);
   }
 }
 
