@@ -283,12 +283,6 @@ body, html {
   box-sizing: border-box;
 }
 
-.hero-wrapper .home-section-title {
-  position: relative;
-  z-index: 2;
-  margin: 0;
-}
-
 #hero-field {
 position: absolute;
 top: 0;
@@ -303,7 +297,7 @@ pointer-events: none;
  *   ========================================= */
 .home-section-title,
 .home-section-subtitle {
-  text-align: left;
+  text-align: center;
   width: 100%;
   display: block;
 }
@@ -313,46 +307,45 @@ pointer-events: none;
   z-index: 2;
   margin: 0;
 
-  animation: continuousWipe 9.8s cubic-bezier(0.22, 1, 0.36, 1) infinite !important;
+  animation: capcutWipe 9.8s cubic-bezier(0.19, 1, 0.22, 1) infinite !important;
 
   will-change: clip-path, transform, opacity;
 }
 
-/* KEYFRAMES LOOPING */
-@keyframes continuousWipe {
+@keyframes capcutWipe {
   0% {
     -webkit-clip-path: inset(0 100% 0 0);
     clip-path: inset(0 100% 0 0);
+    transform: translate(-40px, 40px);
     opacity: 0;
-    transform: translateY(15px);
   }
 
   19.39% {
     -webkit-clip-path: inset(0 0 0 0);
     clip-path: inset(0 0 0 0);
+    transform: translate(0, 0);
     opacity: 1;
-    transform: translateY(0);
   }
 
   70.41% {
     -webkit-clip-path: inset(0 0 0 0);
     clip-path: inset(0 0 0 0);
+    transform: translate(0, 0);
     opacity: 1;
-    transform: translateY(0);
   }
 
   89.8% {
     -webkit-clip-path: inset(0 0 0 100%);
     clip-path: inset(0 0 0 100%);
+    transform: translate(40px, -40px);
     opacity: 0;
-    transform: translateY(-15px);
   }
 
   100% {
     -webkit-clip-path: inset(0 0 0 100%);
     clip-path: inset(0 0 0 100%);
+    transform: translate(40px, -40px);
     opacity: 0;
-    transform: translateY(-15px);
   }
 }
 
