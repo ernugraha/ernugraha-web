@@ -1,3 +1,7 @@
+body, html {
+  overflow-x: hidden;
+}
+
 .features {
   display: block !important;
 }
@@ -255,21 +259,34 @@
   max-width: 90%;
 }
 
-/* =========================================
- *   HERO CANVAS SECTION (NguliQ Effect)
- *   ========================================= */
 .features.hero-wrapper {
+  width: 100vw;
   position: relative;
-  display: flex !important; /* Memaksa flexbox agar teks di tengah */
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  max-width: 100vw;
+
+  min-height: 60vh;
+  display: flex !important;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  min-height: 55vh; /* Tinggi area gelombang */
   overflow: hidden;
   background: #0f1115;
-  padding: 60px 20px;
+
+  padding: 0;
+  margin-top: -20px;
+
   box-sizing: border-box;
+}
+
+.hero-wrapper .home-section-title {
+  position: relative;
+  z-index: 2;
+  padding: 20px 20px;
+  margin: 0;
 }
 
 #hero-field {
@@ -279,7 +296,7 @@ left: 0;
 width: 100%;
 height: 100%;
 z-index: 1;
-pointer-events: none; /* Biar interaksi mouse tembus ke parent */
+pointer-events: none;
 }
 
 .hero-wrapper .home-section-title {
