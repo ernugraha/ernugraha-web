@@ -146,20 +146,15 @@ let BeautifulJekyllJS = {
 
 document.addEventListener("DOMContentLoaded", () => {
   const titles = document.querySelectorAll('.home-section-title');
-
-  // Fallback kalau user minta reduced motion
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const reveal = (el) => {
     if (!el || el.classList.contains('is-visible')) return;
-
     if (reduceMotion) {
       el.classList.add('is-visible');
       return;
     }
-
-    // Double rAF: paksa browser paint state awal (hidden) dulu,
-    // baru tambahkan class. Ini yang bikin transisi dijamin jalan di Chromium.
+    // Double rAF memastikan browser udah "siap" sebelum animasi jalan
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         el.classList.add('is-visible');
@@ -167,7 +162,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // Kalau IntersectionObserver tidak tersedia, langsung tampilkan semua
   if (!('IntersectionObserver' in window)) {
     titles.forEach(reveal);
     return;
@@ -184,8 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   titles.forEach(title => {
     observer.observe(title);
-    // Safety net: kalau dalam 2.5s belum ke-reveal, paksa tampil
-    // (jaga-jaga observer tidak fire karena alasan apa pun)
+    // Jaring pengaman
     setTimeout(() => reveal(title), 2500);
   });
 });

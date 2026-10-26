@@ -290,9 +290,7 @@
   max-width: 90%;
 }
 
-/* Home headings */
-
-/* Layout dasar */
+/* 1. Layout Dasar (Bebas mau pakai ini atau punyamu) */
 .home-section-title,
 .home-section-subtitle {
   text-align: center;
@@ -300,40 +298,41 @@
   display: block;
 }
 
-/* State awal (tersembunyi) */
+/* 2. STATE AWAL (Teks disembunyikan) */
 .home-section-title {
-  -webkit-clip-path: inset(0 100% 0 0);
-          clip-path: inset(0 100% 0 0);
-  transform: translateY(20px);
-  opacity: 0;
-
-  /* Bantu Chromium composite dengan benar */
-  will-change: clip-path, transform, opacity;
-
-  transition:
-    -webkit-clip-path 1.9s cubic-bezier(0.22, 1, 0.36, 1),
-            clip-path 1.9s cubic-bezier(0.22, 1, 0.36, 1),
-             transform 1.9s cubic-bezier(0.22, 1, 0.36, 1),
-               opacity 1.5s ease;
+  opacity: 0; /* Kunci utama: kita cuma set opacity 0 di awal */
+  /* JANGAN pakai transition di sini! */
 }
 
-/* State akhir (muncul) */
+/* 3. STATE AKHIR (Saat class is-visible ditambahkan JS) */
 .home-section-title.is-visible {
-  -webkit-clip-path: inset(0 0 0 0);
-          clip-path: inset(0 0 0 0);
-  transform: translateY(0);
-  opacity: 1;
+  /* Jalankan animasi, jangan pakai transisi */
+  animation: wipeUpFade 1.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* Hormati preferensi reduced-motion */
+/* 4. KEYFRAMES (Kunci rahasia anti-blank di Chromium) */
+@keyframes wipeUpFade {
+  0% {
+    -webkit-clip-path: inset(0 100% 0 0);
+    clip-path: inset(0 100% 0 0);
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-clip-path: inset(0 0 0 0);
+    clip-path: inset(0 0 0 0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 5. Aksesibilitas */
 @media (prefers-reduced-motion: reduce) {
   .home-section-title {
-    -webkit-clip-path: none;
-            clip-path: none;
-    transform: none;
     opacity: 1;
-    will-change: auto;
-    transition: none;
+  }
+  .home-section-title.is-visible {
+    animation: none;
   }
 }
 /* Tablet */
