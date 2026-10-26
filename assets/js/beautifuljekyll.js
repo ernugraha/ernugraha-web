@@ -234,25 +234,22 @@ document.addEventListener("DOMContentLoaded", () => {
         const v = a * a;
 
         if (v < 0.03) {
-          ctx.fillStyle = "rgba(0, 150, 255, 0.08)"; // Biru transparan
+          ctx.fillStyle = "rgba(236,228,255,0.07)";
           ctx.fillRect(p.x - 0.75, p.y - 0.75, 1.5, 1.5);
           continue;
         }
 
         const size = 1.4 + v * 3.6;
-
-        const r = Math.floor(0 + (255 - 0) * v);
-        const g = Math.floor(150 + (220 - 150) * v);
-        const b = Math.floor(255 + (0 - 255) * v);
-
-        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${0.2 + v * 0.8})`;
+        ctx.fillStyle = v > 0.5
+        ? `rgba(244,185,66,${0.35 + v * 0.6})`
+        : `rgba(236,228,255,${0.12 + v * 0.7})`;
         ctx.fillRect(p.x - size / 2, p.y - size / 2, size, size);
       }
 
       for (const s of src) {
         ctx.beginPath();
         ctx.arc(s.x, s.y, 4, 0, Math.PI * 2);
-        ctx.fillStyle = "#00d1ff"; // Biru Neon
+        ctx.fillStyle = "#F4B942";
         ctx.fill();
       }
     }
