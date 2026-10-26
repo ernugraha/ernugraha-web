@@ -307,44 +307,55 @@ pointer-events: none;
   z-index: 2;
   margin: 0;
 
-  animation: capcutWipe 9.8s cubic-bezier(0.19, 1, 0.22, 1) infinite !important;
+  /* Total 9.8 detik, pakai kurva Bounce */
+  animation: horizontalBounceWipe 9.8s infinite !important;
+  animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   will-change: clip-path, transform, opacity;
 }
 
-@keyframes capcutWipe {
+@keyframes horizontalBounceWipe {
+
   0% {
     -webkit-clip-path: inset(0 100% 0 0);
     clip-path: inset(0 100% 0 0);
-    transform: translate(-40px, 40px);
+    transform: translateX(-50px);
     opacity: 0;
+  }
+
+  14.28% {
+    -webkit-clip-path: inset(0 0 0 0);
+    clip-path: inset(0 0 0 0);
+    transform: translateX(15px);
+    opacity: 1;
   }
 
   19.39% {
     -webkit-clip-path: inset(0 0 0 0);
     clip-path: inset(0 0 0 0);
-    transform: translate(0, 0);
+    transform: translateX(0);
     opacity: 1;
   }
 
   70.41% {
     -webkit-clip-path: inset(0 0 0 0);
     clip-path: inset(0 0 0 0);
-    transform: translate(0, 0);
+    transform: translateX(0);
     opacity: 1;
   }
 
   89.8% {
     -webkit-clip-path: inset(0 0 0 100%);
     clip-path: inset(0 0 0 100%);
-    transform: translate(40px, -40px);
+    transform: translateX(50px); /* Terbang ke kanan */
     opacity: 0;
   }
+
 
   100% {
     -webkit-clip-path: inset(0 0 0 100%);
     clip-path: inset(0 0 0 100%);
-    transform: translate(40px, -40px);
+    transform: translateX(50px);
     opacity: 0;
   }
 }
