@@ -247,7 +247,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       for (const s of src) {
         ctx.beginPath();
-        ctx.arc(s.x, s.y, 4, 0, Math.PI * 2);
         ctx.fillStyle = "#F4B942";
         ctx.fill();
       }
