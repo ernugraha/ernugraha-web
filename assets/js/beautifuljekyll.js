@@ -240,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const size = 1.4 + v * 3.6;
         ctx.fillStyle = v > 0.5
-        ? `rgba(244,185,66,${0.35 + v * 0.6})`
+        ? `rgba(255,255,255,${0.35 + v * 0.6})`
         : `rgba(236,228,255,${0.12 + v * 0.7})`;
         ctx.fillRect(p.x - size / 2, p.y - size / 2, size, size);
       }
