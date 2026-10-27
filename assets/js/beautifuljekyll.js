@@ -10,11 +10,11 @@ let BeautifulJekyllJS = {
 
     // Shorten the navbar after scrolling a little bit down
     $(window).scroll(function() {
-        if ($(".navbar").offset().top > 50) {
-            $(".navbar").addClass("top-nav-short");
-        } else {
-            $(".navbar").removeClass("top-nav-short");
-        }
+      if ($(".navbar").offset().top > 50) {
+        $(".navbar").addClass("top-nav-short");
+      } else {
+        $(".navbar").removeClass("top-nav-short");
+      }
     });
 
     // On mobile, hide the avatar when expanding the navbar menu
@@ -40,9 +40,9 @@ let BeautifulJekyllJS = {
     // Set the navbar-dark/light class based on its background color
     const rgb = $('.navbar').css("background-color").replace(/[^\d,]/g,'').split(",");
     const brightness = Math.round(( // http://www.w3.org/TR/AERT#color-contrast
-      parseInt(rgb[0]) * 299 +
-      parseInt(rgb[1]) * 587 +
-      parseInt(rgb[2]) * 114
+    parseInt(rgb[0]) * 299 +
+    parseInt(rgb[1]) * 587 +
+    parseInt(rgb[2]) * 114
     ) / 1000);
     if (brightness <= 125) {
       $(".navbar").removeClass("navbar-light").addClass("navbar-dark");
@@ -144,4 +144,4 @@ let BeautifulJekyllJS = {
 
 // 2fc73a3a967e97599c9763d05e564189
 
-
+document.addEventListener('DOMContentLoaded', BeautifulJekyllJS.init);
