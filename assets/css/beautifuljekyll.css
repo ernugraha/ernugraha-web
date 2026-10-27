@@ -1287,3 +1287,23 @@ pre {
     transform: rotate(0);
   }
 }
+
+.container .row > .col-lg-8,
+.blog-post .col-lg-8 {
+  width: 85% !important;
+  left: 0 !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  float: none !important;
+}
+
+@media (max-width: 991px) {
+  .container .row > .col-lg-8,
+  .container .row > .col-md-10 {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+}
