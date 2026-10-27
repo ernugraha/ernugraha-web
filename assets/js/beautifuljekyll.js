@@ -187,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
     heroField(canvas);
   }
 
-  // Hero Canvas
+  // Fungsi Canvas NguliQ (Jangan diubah)
   function heroField(canvas) {
     const ctx = canvas.getContext("2d");
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -245,7 +245,11 @@ document.addEventListener("DOMContentLoaded", () => {
         ctx.fillRect(p.x - size / 2, p.y - size / 2, size, size);
       }
 
-
+      for (const s of src) {
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, 4, 0, Math.PI * 2);
+        ctx.fillStyle = "#F4B942";
+        ctx.fill();
       }
     }
 
