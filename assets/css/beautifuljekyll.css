@@ -944,7 +944,7 @@ table tr {
   padding: 0;
 }
 table tr:nth-child(2n) {
-  background-color: #f8f8f8;
+  background-color: #cccccc;
 }
 table tr th,
 table tr td {
@@ -1078,7 +1078,7 @@ pre {
 }
 
 .box-success {
-  background-color: #98FB98;
+  background-color: #006400;
   border-left-color: #3CB371;
 }
 
