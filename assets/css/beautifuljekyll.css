@@ -944,7 +944,7 @@ table tr {
   padding: 0;
 }
 table tr:nth-child(2n) {
-  background-color: #cccccc;
+  background-color: #000000;
 }
 table tr th,
 table tr td {
